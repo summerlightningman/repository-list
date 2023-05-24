@@ -6,12 +6,6 @@ export const get = async ({ name = "", count = 100 }: GetQueryParams): Promise<A
     return client.query({
         query: gql`{
             search(query: "name:${name}", type: REPOSITORY, first: ${count}) {
-                pageInfo {
-                  startCursor
-                  hasNextPage
-                  endCursor
-                }
-                repositoryCount
                 edges {
                     node {
                         ... on Repository {
