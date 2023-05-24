@@ -1,8 +1,9 @@
-import {create} from "zustand";
-import * as repositoryAPI from "@api/github/repository-list.api"
-import {RepositoryListState} from "./types.ts";
+import {create} from 'zustand'
+import * as repositoryAPI from '@api/github/repository-list.api'
+import {RepositoryListState} from './types.ts'
+import {devtools} from 'zustand/middleware';
 
-const useRepositoryListStore = create<RepositoryListState>()(set => ({
+const useRepositoryListStore = create<RepositoryListState>()(devtools(set => ({
     list: [],
     isLoading: false,
     fetch: async name => {
@@ -16,6 +17,6 @@ const useRepositoryListStore = create<RepositoryListState>()(set => ({
         }))
         return set({ isLoading: false, list })
     }
-}))
+})))
 
 export default useRepositoryListStore
