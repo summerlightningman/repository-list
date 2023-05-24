@@ -12,7 +12,7 @@ const useRepositoryListStore = create<RepositoryListState>()(set => ({
             starsCount: node.stargazerCount,
             link: node.url
         }))
-        return set(() => ({ list }))
+        return set({ list })
     }
 }))
 
