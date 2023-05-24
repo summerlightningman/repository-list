@@ -8,7 +8,10 @@ const Paginator: FC = () => {
     const page = +(searchParams.get('page') || 1)
 
     const goToPage = (page: number) => {
-        if (page >= 1 && page <= 10) setSearchParams({ ...searchParams, page: String(page) })
+        if (page >= 1 && page <= 10) {
+            searchParams.set('page', String(page))
+            setSearchParams(searchParams)
+        }
     }
     const handleClick = (page: number) => () => goToPage(page)
     const goToPrevPage = () => goToPage(page - 1)
