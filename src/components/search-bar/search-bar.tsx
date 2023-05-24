@@ -26,7 +26,7 @@ const SearchBar: FC = () => {
                 onInput={handleInput}
                 onKeyUp={handleKeyUp}
             />
-            <button className="search-bar__submit" disabled={repositoryListStore.isLoading}>Search</button>
+            <button className="search-bar__submit" disabled={repositoryListStore.isLoading}>🔍︎</button>
         </div>
     </section>
 }
