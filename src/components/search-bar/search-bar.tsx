@@ -7,22 +7,22 @@ import useRepositoryListStore from '@store/repository-list/repository-list.store
 import './search-bar.scss'
 
 const SearchBar: FC = () => {
-    const { name: nameInput, setName } = useSearchQueryStore()
+    const { name, setName } = useSearchQueryStore()
     const [searchParams, setSearchParams] = useSearchParams()
     const repositoryListStore = useRepositoryListStore()
 
-    const name = searchParams.get('name') || ''
+    const query = searchParams.get('name') || ''
 
     useEffect(() => {
-        setName(name)
-        if (name) repositoryListStore.fetch(name)
-    }, [name])
+        setName(query)
+        if (query !== null) repositoryListStore.fetch(query)
+    }, [query])
 
     const handleInput: KeyboardEventHandler<HTMLInputElement> = e => setName(e.currentTarget.value)
 
     const updateQuery = () => {
-        if (name === nameInput) return
-        setSearchParams({ name: nameInput, page: '1' })
+        if (query === name) return
+        setSearchParams({ name: name, page: '1' })
     }
 
     const handleKeyUp: KeyboardEventHandler<HTMLInputElement> = e => {
@@ -37,7 +37,7 @@ const SearchBar: FC = () => {
                 type="text"
                 placeholder="Type repository name here..."
                 disabled={repositoryListStore.isLoading}
-                value={nameInput}
+                value={name}
                 onInput={handleInput}
                 onKeyUp={handleKeyUp}
             />
