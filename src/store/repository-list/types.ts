@@ -7,5 +7,6 @@ export interface RepositoryListItem {
 
 export interface RepositoryListState {
     list: RepositoryListItem[],
+    isLoading: boolean
     fetch: (name: string) => void,
 }

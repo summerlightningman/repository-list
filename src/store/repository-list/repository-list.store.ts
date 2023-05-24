@@ -4,7 +4,9 @@ import {RepositoryListState} from "./types.ts";
 
 const useRepositoryListStore = create<RepositoryListState>()(set => ({
     list: [],
+    isLoading: false,
     fetch: async name => {
+        set({ isLoading: true })
         const { data } = await repositoryAPI.get({ name })
         const list = data.search.edges.map(({ node }) => ({
             name: node.name,
@@ -12,7 +14,7 @@ const useRepositoryListStore = create<RepositoryListState>()(set => ({
             starsCount: node.stargazerCount,
             link: node.url
         }))
-        return set({ list })
+        return set({ isLoading: false, list })
     }
 }))
 
