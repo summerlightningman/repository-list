@@ -5,7 +5,7 @@ import {RepositoryListState} from "./types.ts";
 const useRepositoryListStore = create<RepositoryListState>()(set => ({
     repositoryCount: 0,
     list: [],
-    fetchList: async name => {
+    fetch: async name => {
         const raw = await repositoryAPI.get({ name })
         const repositoryCount = raw.data.search.repositoryCount
         const list = raw.data.search.edges.map(({ node }) => ({

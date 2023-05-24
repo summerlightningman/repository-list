@@ -5,8 +5,8 @@ const App: FC = () => {
   const repositoryListStore = useRepositoryListStore()
 
   useEffect(() => {
-    repositoryListStore.fetchList("")
-  }, [repositoryListStore.list])
+    repositoryListStore.fetch("")
+  }, [])
 
   console.log(repositoryListStore)
 

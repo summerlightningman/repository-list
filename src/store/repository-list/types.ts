@@ -6,7 +6,7 @@ export interface RepositoryListItem {
 }
 
 export interface RepositoryListState {
-    list: RepositoryListItem[],
-    fetchList: (name: string) => void,
     repositoryCount: number
+    list: RepositoryListItem[],
+    fetch: (name: string) => void,
 }
