@@ -1,12 +1,9 @@
 import {FC} from 'react'
+import './app.scss'
 
 const App: FC = () => {
 
-  return (
-    <>
-
-    </>
-  )
+  return <main className="main"></main>
 }
 
 export default App
