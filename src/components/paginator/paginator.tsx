@@ -1,14 +1,18 @@
 import { FC } from 'react'
-import useSearchQueryStore from '@store/search-query/search-query.store';
 
 import './paginator.scss'
+import {useSearchParams} from "react-router-dom";
 
 const Paginator: FC = () => {
-    const { page, setPage } = useSearchQueryStore()
+    const [searchParams, setSearchParams] = useSearchParams()
+    const page = +(searchParams.get('page') || 1)
 
-    const goToPage = (page: number) => () => setPage(page)
-    const goToPrevPage = () => page > 1 && setPage(page - 1)
-    const goToNextPage = () => page < 10 && setPage(page + 1)
+    const goToPage = (page: number) => {
+        if (page >= 1 && page <= 10) setSearchParams({page: String(page)})
+    }
+    const handleClick = (page: number) => () => goToPage(page)
+    const goToPrevPage = () => goToPage(page - 1)
+    const goToNextPage = () => goToPage(page + 1)
     const getButtonClasses = (pageNum: number) => {
         const classes = ['paginator__item']
         if (pageNum === page) classes.push('paginator__item--active')
@@ -22,7 +26,7 @@ const Paginator: FC = () => {
                 (_, idx) =>
                     <button
                         className={getButtonClasses(idx + 1)}
-                        onClick={goToPage(idx + 1)}
+                        onClick={handleClick(idx + 1)}
                         key={idx}
                     >
                         {idx + 1}
