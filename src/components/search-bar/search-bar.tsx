@@ -1,24 +1,37 @@
-import {FC, KeyboardEventHandler, MouseEventHandler} from 'react';
+import {FC, KeyboardEventHandler, useEffect} from 'react';
+import {useSearchParams} from "react-router-dom";
+
 import useSearchQueryStore from '@store/search-query/search-query.store.ts'
 import useRepositoryListStore from '@store/repository-list/repository-list.store.ts'
 
 import './search-bar.scss'
 
 const SearchBar: FC = () => {
-    const searchQueryStore = useSearchQueryStore()
+    const { name: nameInput, setName } = useSearchQueryStore()
+    const [searchParams, setSearchParams] = useSearchParams()
     const repositoryListStore = useRepositoryListStore()
 
+    const name = searchParams.get('name') || ''
+
+    useEffect(() => {
+        setName(name)
+        if (name) repositoryListStore.fetch(name)
+    }, [name])
+
     const handleInput: KeyboardEventHandler<HTMLInputElement> = e => {
-        searchQueryStore.setName(e.currentTarget.value)
+        setName(e.currentTarget.value)
+    }
+
+    const updateQuery = () => {
+        searchParams.set('name', nameInput)
+        setSearchParams(searchParams)
     }
 
     const handleKeyUp: KeyboardEventHandler<HTMLInputElement> = e => {
-        if (e.key === 'Enter') repositoryListStore.fetch(searchQueryStore.name)
+        if (e.key === 'Enter') updateQuery()
     }
+    const handleClick = () => updateQuery()
 
-    const handleClick: MouseEventHandler<HTMLButtonElement> = () => {
-        repositoryListStore.fetch(searchQueryStore.name)
-    }
 
     return <section className="search-bar">
         <div className="search-bar__controls">
@@ -27,7 +40,7 @@ const SearchBar: FC = () => {
                 type="text"
                 placeholder="Type repository name here..."
                 disabled={repositoryListStore.isLoading}
-                value={searchQueryStore.name}
+                value={nameInput}
                 onInput={handleInput}
                 onKeyUp={handleKeyUp}
             />

@@ -4,8 +4,6 @@ import {devtools} from 'zustand/middleware'
 
 const useSearchQueryStore = create<SearchQueryState>()(devtools(set => ({
     name: "",
-    page: 1,
-    setPage: page => set({ page }),
     setName: name => set({ name })
 })))
 
