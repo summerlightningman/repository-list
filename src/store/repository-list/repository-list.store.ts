@@ -1,5 +1,5 @@
 import {create} from "zustand";
-import * as repositoryAPI from "../../api/github/repository-list.api"
+import * as repositoryAPI from "@api/github/repository-list.api"
 import {RepositoryListState} from "./types.ts";
 
 const useRepositoryListStore = create<RepositoryListState>()(set => ({

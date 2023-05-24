@@ -1,6 +1,6 @@
 import {FC, KeyboardEventHandler, MouseEventHandler} from 'react';
-import useSearchQueryStore from '../../store/search-query/search-query.store.ts'
-import useRepositoryListStore from '../../store/repository-list/repository-list.store.ts'
+import useSearchQueryStore from '@store/search-query/search-query.store.ts'
+import useRepositoryListStore from '@store/repository-list/repository-list.store.ts'
 
 import './search-bar.scss'
 
