@@ -2,9 +2,11 @@ import { FC } from 'react'
 
 import './paginator.scss'
 import {useSearchParams} from "react-router-dom";
+import useRepositoryListStore from "@store/repository-list/repository-list.store.ts";
 
 const Paginator: FC = () => {
     const [searchParams, setSearchParams] = useSearchParams()
+    const { isLoading } = useRepositoryListStore()
     const page = +(searchParams.get('page') || 1)
 
     const goToPage = (page: number) => {
@@ -31,6 +33,7 @@ const Paginator: FC = () => {
                         className={getButtonClasses(idx + 1)}
                         onClick={handleClick(idx + 1)}
                         key={idx}
+                        disabled={isLoading}
                     >
                         {idx + 1}
                     </button>

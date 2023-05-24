@@ -18,20 +18,17 @@ const SearchBar: FC = () => {
         if (name) repositoryListStore.fetch(name)
     }, [name])
 
-    const handleInput: KeyboardEventHandler<HTMLInputElement> = e => {
-        setName(e.currentTarget.value)
-    }
+    const handleInput: KeyboardEventHandler<HTMLInputElement> = e => setName(e.currentTarget.value)
 
     const updateQuery = () => {
-        searchParams.set('name', nameInput)
-        setSearchParams(searchParams)
+        if (name === nameInput) return
+        setSearchParams({ name: nameInput, page: '1' })
     }
 
     const handleKeyUp: KeyboardEventHandler<HTMLInputElement> = e => {
         if (e.key === 'Enter') updateQuery()
     }
     const handleClick = () => updateQuery()
-
 
     return <section className="search-bar">
         <div className="search-bar__controls">
