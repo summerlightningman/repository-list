@@ -37,4 +37,12 @@
 
     font-size: 1.5rem;
   }
+
+  &__submit:hover {
+    background: #c0bfbf;
+  }
+
+  &__submit:active {
+    background: #a4a3a3;
+  }
 }
