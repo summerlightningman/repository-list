@@ -1,4 +1,4 @@
-import {FC, KeyboardEventHandler} from 'react';
+import {FC, KeyboardEventHandler, MouseEventHandler} from 'react';
 import useSearchQueryStore from '../../store/search-query/search-query.store.ts'
 import useRepositoryListStore from '../../store/repository-list/repository-list.store.ts'
 
@@ -16,6 +16,10 @@ const SearchBar: FC = () => {
         if (e.key === 'Enter') repositoryListStore.fetch(searchQueryStore.name)
     }
 
+    const handleClick: MouseEventHandler<HTMLButtonElement> = () => {
+        repositoryListStore.fetch(searchQueryStore.name)
+    }
+
     return <section className="search-bar">
         <div className="search-bar__controls">
             <input
@@ -27,7 +31,11 @@ const SearchBar: FC = () => {
                 onInput={handleInput}
                 onKeyUp={handleKeyUp}
             />
-            <button className="search-bar__submit" disabled={repositoryListStore.isLoading}>🔍︎</button>
+            <button
+                className="search-bar__submit"
+                disabled={repositoryListStore.isLoading}
+                onClick={handleClick}
+            >🔍︎</button>
         </div>
     </section>
 }
