@@ -21,6 +21,7 @@ const SearchBar: FC = () => {
             <input
                 className="search-bar__input"
                 type="text"
+                placeholder="Type repository name here..."
                 disabled={repositoryListStore.isLoading}
                 value={searchQueryStore.name}
                 onInput={handleInput}
