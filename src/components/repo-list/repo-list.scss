@@ -1,11 +1,11 @@
 .repo-list {
-  height: calc(100% - 45px - 45px);
+  height: calc(100% - 105px - 45px);
   overflow: auto;
   padding: 10px 15px;
 
   &__item {
     list-style: none;
-    height: 55px;
+    height: 50px;
     border: 1px solid gray;
     border-radius: 5px;
 
