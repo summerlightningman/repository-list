@@ -1,11 +1,9 @@
+@import '../../style/mixins/flex';
+
 .search-bar {
   width: 100%;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
+  @include flex-column-center;
   margin-bottom: 15px;
 
   &__controls {

@@ -1,14 +1,12 @@
 @import '../../style/mixins/font';
+@import '../../style/mixins/flex';
 
 .repo-list {
   overflow: auto;
   padding: 10px 15px;
 
   &__loading {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    @include flex-column-center;
 
     @include font-roboto(900);
     font-size: 3rem;
