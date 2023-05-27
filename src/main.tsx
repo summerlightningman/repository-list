@@ -1,10 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import {createBrowserRouter, RouterProvider} from 'react-router-dom';
+
 import App from './app.tsx'
+import List from '@pages/list/list.tsx';
+import Card from '@pages/card/card.tsx';
 
 import './main.scss'
-import {createBrowserRouter, RouterProvider} from "react-router-dom";
-import List from "@pages/list/list.tsx";
 
 const router = createBrowserRouter([
     {
@@ -15,6 +17,10 @@ const router = createBrowserRouter([
                 path: '/search',
                 element: <List/>
             },
+            {
+                path: '/repository/:id',
+                element: <Card/>
+            }
         ]
     }
 ])
