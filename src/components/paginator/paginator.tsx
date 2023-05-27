@@ -6,11 +6,11 @@ import useRepositoryListStore from "@store/repository-list/repository-list.store
 
 const Paginator: FC = () => {
     const [searchParams, setSearchParams] = useSearchParams()
-    const { isLoading } = useRepositoryListStore()
+    const { isLoading, pagesCount } = useRepositoryListStore()
     const page = +(searchParams.get('page') || 1)
 
     const goToPage = (page: number) => {
-        if (page >= 1 && page <= 10) {
+        if (page >= 1 && page <= pagesCount) {
             searchParams.set('page', String(page))
             setSearchParams(searchParams)
         }
@@ -27,7 +27,7 @@ const Paginator: FC = () => {
     return <section className="paginator">
         <button className="paginator__item" onClick={goToPrevPage} key={-1}>◀︎</button>
         {
-            Array(10).fill(null).map(
+            Array(pagesCount).fill(null).map(
                 (_, idx) =>
                     <button
                         className={getButtonClasses(idx + 1)}
@@ -39,7 +39,7 @@ const Paginator: FC = () => {
                     </button>
             )
         }
-        <button className="paginator__item" onClick={goToNextPage} key={11}>▶︎</button>
+        <button className="paginator__item" onClick={goToNextPage} key={pagesCount + 1}>▶︎</button>
     </section>
 }
 

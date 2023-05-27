@@ -6,6 +6,7 @@ import {devtools} from 'zustand/middleware';
 const useRepositoryListStore = create<RepositoryListState>()(devtools(set => ({
     list: [],
     isLoading: false,
+    pagesCount: 0,
     fetch: async name => {
         set({ isLoading: true })
         const { data } = await repositoryAPI.get({ name })
@@ -15,7 +16,8 @@ const useRepositoryListStore = create<RepositoryListState>()(devtools(set => ({
             starsCount: node.stargazerCount,
             link: node.url
         }))
-        return set({ isLoading: false, list })
+        const pagesCount = Math.ceil(list.length / 10) || 1
+        return set({ isLoading: false, list, pagesCount })
     }
 })))
 

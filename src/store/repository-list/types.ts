@@ -8,5 +8,6 @@ export interface RepositoryListItem {
 export interface RepositoryListState {
     list: RepositoryListItem[],
     isLoading: boolean
+    pagesCount: number
     fetch: (name: string) => void,
 }
