@@ -8,7 +8,7 @@ export interface RepositoryCardState {
     languageCount: number,
     languageList: string[],
     owner: {
-        name: string,
+        login: string,
         url: string,
         avatarUrl: string,
     },

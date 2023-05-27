@@ -12,7 +12,7 @@ const useRepositoryCardStore = create<RepositoryCardState>()(devtools(set => ({
     languageCount: 0,
     languageList: [],
     owner: {
-        name: '',
+        login: '',
         url: '',
         avatarUrl: '',
     },
@@ -24,7 +24,7 @@ const useRepositoryCardStore = create<RepositoryCardState>()(devtools(set => ({
             isLoading: false,
             name,
             owner: {
-                name: data.repository.owner.login,
+                login: data.repository.owner.login,
                 url: data.repository.owner.url,
                 avatarUrl: data.repository.owner.avatarUrl
             },
