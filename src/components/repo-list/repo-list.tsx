@@ -1,5 +1,5 @@
 import {FC} from 'react'
-import useRepositoryListStore from '@store/repository-list/repository-list.store.ts'
+import useRepositoryListStore from '@store/repository-list/repository-list.ts'
 import {useSearchParams} from 'react-router-dom'
 import RepoListItem from '@components/repo-list/repo-list-item/repo-list-item.tsx'
 import LoaderRing from '@components/loader/loader-ring.tsx';

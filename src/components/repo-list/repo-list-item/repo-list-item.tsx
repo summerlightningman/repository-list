@@ -1,8 +1,20 @@
 import {FC} from 'react'
 import {RepoListItemProps} from '@components/repo-list/repo-list-item/repo-list-item.types.ts'
+import {useNavigate} from 'react-router-dom';
 
-const RepoListItem: FC<RepoListItemProps> = ({name, starsCount, lastCommittedBy, link}) => {
-    return <li className="repo-list__item">
+const RepoListItem: FC<RepoListItemProps> = ({
+                                                 name,
+                                                 starsCount,
+                                                 lastCommittedBy,
+                                                 link,
+                                                 owner
+                                             }) => {
+    const navigate = useNavigate()
+    const goToRepoCard = (owner: string, name: string) => () => navigate(`/repository/`, {
+        state: { owner, name }
+    })
+
+    return <li className="repo-list__item" onClick={goToRepoCard(owner, name)}>
         <span className="name">{name}</span>
         <span className="stars-count">{starsCount}</span>
         <span className="last-committed-by">{lastCommittedBy}</span>

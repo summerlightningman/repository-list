@@ -2,7 +2,7 @@ import {FC, KeyboardEventHandler, useEffect} from 'react';
 import {useSearchParams} from "react-router-dom";
 
 import useSearchQueryStore from '@store/search-query/search-query.store.ts'
-import useRepositoryListStore from '@store/repository-list/repository-list.store.ts'
+import useRepositoryListStore from '@store/repository-list/repository-list.ts'
 
 import './search-bar.scss'
 

@@ -14,7 +14,8 @@ const useRepositoryListStore = create<RepositoryListState>()(devtools(set => ({
             name: node.name,
             lastCommittedBy: new Date(node.pushedAt).toLocaleString(),
             starsCount: node.stargazerCount,
-            link: node.url
+            link: node.url,
+            owner: node.owner.login
         }))
         const pagesCount = Math.ceil(list.length / 10) || 1
         return set({ isLoading: false, list, pagesCount })
