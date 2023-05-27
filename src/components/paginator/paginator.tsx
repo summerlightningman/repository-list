@@ -2,7 +2,7 @@ import { FC } from 'react'
 
 import './paginator.scss'
 import {useSearchParams} from "react-router-dom";
-import useRepositoryListStore from "@store/repository-list/repository-list.store.ts";
+import useRepositoryListStore from "@store/repository-list/repository-list";
 
 const Paginator: FC = () => {
     const [searchParams, setSearchParams] = useSearchParams()
