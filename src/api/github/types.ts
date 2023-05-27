@@ -9,6 +9,9 @@ export interface RepositoryListItemRaw {
         pushedAt: string
         stargazerCount: number,
         url: string
+        owner: {
+            login: string
+        }
     }
 }
 

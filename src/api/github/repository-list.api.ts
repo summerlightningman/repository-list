@@ -1,8 +1,8 @@
-import client from "./client.ts";
-import {ApolloQueryResult, gql} from "@apollo/client";
-import {GetQueryParams, GetResponse} from "./types.ts";
+import client from './client.ts';
+import {ApolloQueryResult, gql} from '@apollo/client';
+import {GetQueryParams, GetResponse} from './types.ts';
 
-export const get = async ({ name = "", count = 100 }: GetQueryParams): Promise<ApolloQueryResult<GetResponse>> => {
+export const get = async ({ name = '', count = 100 }: GetQueryParams): Promise<ApolloQueryResult<GetResponse>> => {
     return client.query({
         query: gql`{
             search(query: "name:${name}", type: REPOSITORY, first: ${count}) {
@@ -13,6 +13,9 @@ export const get = async ({ name = "", count = 100 }: GetQueryParams): Promise<A
                             stargazerCount
                             pushedAt
                             url
+                            owner {
+                                login
+                            }
                         }
                     }
                 }

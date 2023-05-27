@@ -3,6 +3,7 @@ export interface RepositoryListItem {
     starsCount: number
     lastCommittedBy: string
     link: string
+    owner: string
 }
 
 export interface RepositoryListState {
