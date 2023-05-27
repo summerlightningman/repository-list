@@ -16,7 +16,8 @@ const Card = () => {
         description,
         starsCount,
         languageCount,
-        languageList
+        languageList,
+        lastCommitAt
     } = useRepositoryCardStore()
 
     useEffect(() => {
@@ -40,19 +41,19 @@ const Card = () => {
                             <h1 className="repo-name">{repoName}</h1>
                             <span className="stars-count">{starsCount}</span>
                         </div>
+                        <p>Last commit at: {lastCommitAt}</p>
                         {
                             languageCount && <p className="language-list">
-                            Languages: {
-                                languageList.map(lang => <span className="language-list__item">{lang}</span>)
-                            }
-                        </p>
+                                Languages: {
+                                    languageList.map(lang => <span className="language-list__item">{lang}</span>)
+                                }
+                            </p>
                         }
                         <p className="card__repo-description">{description || '[no description]'}</p>
                     </section>
                     <img src={avatarUrl} alt={url} className="card__avatar"/>
                     <section className="card__user-info">
-                        <p>{login}</p>
-                        <a href={url} target="_blank">{url}</a>
+                        <a href={url} target="_blank">{login}</a>
                     </section>
                 </div>
         }

@@ -16,6 +16,7 @@ const useRepositoryCardStore = create<RepositoryCardState>()(devtools(set => ({
         url: '',
         avatarUrl: '',
     },
+    lastCommitAt: '',
     fetch: async ({ name, owner }: GetRepositoryInfoQueryParams) => {
         set({ isLoading: true })
         const { data } = await repositoryInfoAPI.get({ name, owner })
@@ -30,7 +31,8 @@ const useRepositoryCardStore = create<RepositoryCardState>()(devtools(set => ({
             },
             starsCount: data.repository.stargazerCount,
             languageCount: data.repository.languages.totalCount,
-            languageList: data.repository.languages.nodes.map(item => item.name)
+            languageList: data.repository.languages.nodes.map(item => item.name),
+            lastCommitAt: new Date(data.repository.pushedAt).toLocaleString(),
         })
     }
 })))

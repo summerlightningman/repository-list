@@ -12,5 +12,6 @@ export interface RepositoryCardState {
         url: string,
         avatarUrl: string,
     },
+    lastCommitAt: string,
     fetch: (params: GetRepositoryInfoQueryParams) => void
 }
