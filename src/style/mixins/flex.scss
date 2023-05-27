@@ -1,0 +1,10 @@
+@mixin flex-space-around {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.flex-space-around {
+  @include flex-space-around;
+}
