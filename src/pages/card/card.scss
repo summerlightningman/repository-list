@@ -1,0 +1,87 @@
+@import '../../style/mixins/font';
+
+.card {
+  height: 100%;
+  border-radius: inherit;
+
+  &__repo-info {
+    height: 100%;
+    display: grid;
+
+    grid-template-columns: 1fr 8fr 300px;
+    grid-template-rows: 300px 2fr;
+  }
+
+  &__back-btn {
+    grid-row: 1 / 3;
+    grid-column: 1;
+
+    background: #cbcbcb;
+    border: none;
+    border-radius: 15px 0 0 15px;
+
+    font-size: 1rem;
+
+    &:hover {
+      background: #c0bfbf;
+    }
+
+    &:active {
+      background: #a4a3a3;
+    }
+  }
+
+  &__repo-section {
+    grid-row: 1 / 3;
+    grid-column: 2;
+
+    padding: 35px 15px 0 25px;
+
+    .repo-name {
+      @include font-roboto(900);
+
+      font-size: 4rem;
+    }
+
+    .stars-count {
+      font-size: 3rem;
+      padding: 10px 10px 10px 20px;
+      background: yellow;
+      border-radius: 15px;
+
+      &:after {
+        padding-left: 10px;
+        content: '★';
+      }
+    }
+
+    .language-list {
+      margin: 5px 0;
+
+      &__item {
+        padding: 5px 8px;
+        background: rgba(123,137,0,0.34);
+        font-weight: 600;
+        border-radius: 10px;
+        margin-left: 10px;
+      }
+    }
+  }
+
+  &__repo-description {
+    margin: 15px 0;
+    overflow: auto;
+  }
+
+  &__avatar {
+    grid-row: 1;
+    grid-column: 3;
+
+    width: 300px;
+    height: 300px;
+  }
+
+  &__user-info {
+    background: #00890959;
+  }
+}

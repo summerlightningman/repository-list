@@ -1,10 +1,10 @@
-@mixin flex-space-around {
+@mixin flex-space-between {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 
-.flex-space-around {
-  @include flex-space-around;
+.flex-space-between {
+  @include flex-space-between;
 }
