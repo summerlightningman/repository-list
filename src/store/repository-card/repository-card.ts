@@ -35,4 +35,4 @@ const useRepositoryCardStore = create<RepositoryCardState>()(devtools(set => ({
     }
 })))
 
-export const useRepositoryCardStore
+export default useRepositoryCardStore
