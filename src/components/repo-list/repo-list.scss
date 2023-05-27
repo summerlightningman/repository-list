@@ -18,7 +18,7 @@
     list-style: none;
     cursor: pointer;
 
-    height: 70px;
+    height: 80px;
     border: 1px solid gray;
     border-radius: 5px;
 
@@ -28,6 +28,11 @@
     grid-template-columns: auto auto;
     grid-gap: 5px;
     padding: 10px;
+
+    * {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 
     & + & {
       margin-top: 8px;
