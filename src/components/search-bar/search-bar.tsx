@@ -19,11 +19,11 @@ const SearchBar: FC = () => {
     }, [query])
 
     const handleInput: KeyboardEventHandler<HTMLInputElement> = e =>
-        setName(e.currentTarget.value.trim())
+        setName(e.currentTarget.value)
 
     const runSearch = () => {
         if (query === name) return
-        setSearchParams({ name, page: '1' })
+        setSearchParams({ name: name.trim(), page: '1' })
     }
 
     const handleKeyUp: KeyboardEventHandler<HTMLInputElement> = e => {
