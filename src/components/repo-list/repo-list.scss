@@ -1,3 +1,5 @@
+@import '../../style/mixins/font';
+
 .repo-list {
   height: calc(100% - 105px - 45px);
   overflow: auto;
@@ -5,14 +7,56 @@
 
   &__item {
     list-style: none;
-    height: 50px;
+    height: 70px;
     border: 1px solid gray;
     border-radius: 5px;
 
     box-shadow: 4px 3px 5px black;
 
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 5px;
+    padding: 10px;
+
     & + & {
       margin-top: 8px;
+    }
+
+    .name {
+      @include font-roboto(900);
+
+      justify-self: start;
+      font-size: 1.5rem;
+    }
+
+    .last-committed-by {
+      @include font-roboto(100);
+
+      justify-self: start;
+      font-style: italic;
+    }
+
+    .stars-count {
+      @include font-roboto(500);
+      font-size: 1rem;
+
+      background: #c5cbcb;
+      padding: 5px;
+      border-radius: 5px;
+
+      justify-self: end;
+
+      &:after {
+        padding-left: 10px;
+        content: '⭐️';
+      }
+    }
+
+    .link {
+      @include font-roboto(100);
+
+      justify-self: end;
+      font-style: italic;
     }
   }
 }

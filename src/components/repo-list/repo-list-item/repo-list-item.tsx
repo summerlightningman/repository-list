@@ -4,7 +4,10 @@ import {RepoListItemProps} from '@components/repo-list/repo-list-item/repo-list-
 
 const RepoListItem: FC<RepoListItemProps> = ({name, starsCount, lastCommittedBy, link}) => {
     return <li className="repo-list__item">
-        {name} - {starsCount} - {lastCommittedBy} - {link}
+        <span className="name">{name}</span>
+        <span className="stars-count">{starsCount}</span>
+        <span className="last-committed-by">{lastCommittedBy}</span>
+        <span className="link"><a href={link}>{link}</a></span>
     </li>
 }
 
