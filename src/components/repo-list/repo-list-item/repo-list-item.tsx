@@ -7,7 +7,7 @@ const RepoListItem: FC<RepoListItemProps> = ({name, starsCount, lastCommittedBy,
         <span className="name">{name}</span>
         <span className="stars-count">{starsCount}</span>
         <span className="last-committed-by">{lastCommittedBy}</span>
-        <span className="link"><a href={link}>{link}</a></span>
+        <span className="link"><a href={link} target="_blank">{link}</a></span>
     </li>
 }
 
