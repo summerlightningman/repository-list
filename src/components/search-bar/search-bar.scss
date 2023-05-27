@@ -1,17 +1,16 @@
 .search-bar {
   width: 100%;
-  max-height: 45px;
 
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 
   margin-bottom: 15px;
 
   &__controls {
+    height: 45px;
     width: 85%;
-    height: 100%;
 
     box-shadow: 3px 3px 10px black;
     border-radius: 5px;
