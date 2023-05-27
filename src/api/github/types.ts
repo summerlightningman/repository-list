@@ -42,6 +42,6 @@ export interface GetRepositoryInfoResponse {
             url: string
         }
         pushedAt: string
-        stargazerCount: string
+        stargazerCount: number
     }
 }
