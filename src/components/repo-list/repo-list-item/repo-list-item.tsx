@@ -1,6 +1,7 @@
 import {FC} from 'react'
 import {RepoListItemProps} from '@components/repo-list/repo-list-item/repo-list-item.types.ts'
 import {useNavigate} from 'react-router-dom';
+import {RouteName} from "../../../../router.tsx";
 
 const RepoListItem: FC<RepoListItemProps> = ({
                                                  name,
@@ -10,9 +11,8 @@ const RepoListItem: FC<RepoListItemProps> = ({
                                                  owner
                                              }) => {
     const navigate = useNavigate()
-    const goToRepoCard = (owner: string, name: string) => () => navigate(`/repository/`, {
-        state: { owner, name }
-    })
+    const goToRepoCard = (owner: string, name: string) => () =>
+        navigate(`${RouteName.RepositoryCard}/${owner}/${name}`)
 
     return <li className="repo-list__item" onClick={goToRepoCard(owner, name)}>
         <span className="name">{name}</span>

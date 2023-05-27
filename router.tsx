@@ -3,7 +3,7 @@ import App from './src/app'
 import List from './src/pages/list/list'
 import Card from './src/pages/card/card'
 
-enum RouteName {
+export enum RouteName {
     Search = '/search',
     RepositoryCard = '/repository'
 }

@@ -1,8 +1,8 @@
 import client from './client.ts';
 import {ApolloQueryResult, gql} from '@apollo/client';
-import {GetQueryParams, GetResponse} from './types.ts';
+import {GetRepositoryListQueryParams, GetRepositoryListResponse} from './types.ts';
 
-export const get = async ({ name = '', count = 100 }: GetQueryParams): Promise<ApolloQueryResult<GetResponse>> => {
+export const get = async ({ name = '', count = 100 }: GetRepositoryListQueryParams): Promise<ApolloQueryResult<GetRepositoryListResponse>> => {
     return client.query({
         query: gql`{
             search(query: "name:${name}", type: REPOSITORY, first: ${count}) {
