@@ -26,21 +26,27 @@ const Paginator: FC = () => {
     }
 
     return <section className="paginator">
-        <button className="paginator__item" onClick={goToPrevPage} key={-1}>◀︎</button>
         {
-            Array(pagesCount).fill(null).map(
-                (_, idx) =>
-                    <button
-                        className={getButtonClasses(idx + 1)}
-                        onClick={handleClick(idx + 1)}
-                        key={idx}
-                        disabled={isLoading}
-                    >
-                        {idx + 1}
-                    </button>
-            )
+            (isLoading || pagesCount <= 1)
+                ? <></>
+                : <>
+                    <button className="paginator__item" onClick={goToPrevPage} key={-1}>◀︎</button>
+                    {
+                        Array(pagesCount).fill(null).map(
+                            (_, idx) =>
+                                <button
+                                    className={getButtonClasses(idx + 1)}
+                                    onClick={handleClick(idx + 1)}
+                                    key={idx}
+                                    disabled={isLoading}
+                                >
+                                    {idx + 1}
+                                </button>
+                        )
+                    }
+                    <button className="paginator__item" onClick={goToNextPage} key={pagesCount + 1}>▶︎</button>
+                </>
         }
-        <button className="paginator__item" onClick={goToNextPage} key={pagesCount + 1}>▶︎</button>
     </section>
 }
 

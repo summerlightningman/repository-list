@@ -4,6 +4,16 @@
   overflow: auto;
   padding: 10px 15px;
 
+  &__loading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    @include font-roboto(900);
+    font-size: 3rem;
+  }
+
   &__item {
     list-style: none;
     height: 70px;
