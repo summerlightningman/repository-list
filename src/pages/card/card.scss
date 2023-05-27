@@ -41,6 +41,7 @@
       @include font-roboto(900);
 
       font-size: 4rem;
+      overflow-wrap: break-word;
     }
 
     .stars-count {
@@ -68,6 +69,10 @@
     }
   }
 
+  &__last-commit-at {
+    margin: 10px 0;
+  }
+
   &__repo-description {
     margin: 15px 0;
     overflow: auto;
@@ -83,5 +88,14 @@
 
   &__user-info {
     background: #00890959;
+    padding: 10px;
+
+  }
+
+  &__user-nickname {
+    @include font-roboto(300);
+    text-decoration: none;
+    font-size: 3rem;
+    overflow-wrap: break-word;
   }
 }

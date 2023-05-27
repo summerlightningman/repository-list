@@ -41,7 +41,7 @@ const Card = () => {
                             <h1 className="repo-name">{repoName}</h1>
                             <span className="stars-count">{starsCount}</span>
                         </div>
-                        <p>Last commit at: {lastCommitAt}</p>
+                        <p className="card__last-commit-at">Last commit at: {lastCommitAt}</p>
                         {
                             languageCount && <p className="language-list">
                                 Languages: {
@@ -53,7 +53,7 @@ const Card = () => {
                     </section>
                     <img src={avatarUrl} alt={url} className="card__avatar"/>
                     <section className="card__user-info">
-                        <a href={url} target="_blank">{login}</a>
+                        <a className="card__user-nickname" href={url} target="_blank">{login}</a>
                     </section>
                 </div>
         }
