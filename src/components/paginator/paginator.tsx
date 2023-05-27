@@ -9,9 +9,10 @@ const Paginator: FC = () => {
     const { isLoading, pagesCount } = useRepositoryListStore()
     const page = +(searchParams.get('page') || 1)
 
-    const goToPage = (page: number) => {
-        if (page >= 1 && page <= pagesCount) {
-            searchParams.set('page', String(page))
+    const goToPage = (to: number) => {
+        if (to === page) return
+        if (to >= 1 && to <= pagesCount) {
+            searchParams.set('page', String(to))
             setSearchParams(searchParams)
         }
     }
