@@ -1,13 +1,22 @@
-import {FC} from 'react'
+import {FC, useEffect} from 'react'
 import useRepositoryListStore from '@store/repository-list/repository-list.ts'
-import {useSearchParams} from 'react-router-dom'
+import {useNavigate, useSearchParams} from 'react-router-dom'
 import RepoListItem from '@components/repo-list/repo-list-item/repo-list-item.tsx'
 import LoaderRing from '@components/loader/loader-ring.tsx';
 
 import './repo-list.scss'
+import {RouteName} from "../../../router.tsx";
 
 const RepoList: FC = () => {
     const repositoryListStore = useRepositoryListStore()
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if (repositoryListStore.isError) {
+            navigate(RouteName.ErrorPage)
+        }
+    }, [navigate, repositoryListStore.isError])
+
     const [searchParams] = useSearchParams()
     const page = +(searchParams.get('page') || 1)
 

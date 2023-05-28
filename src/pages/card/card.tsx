@@ -18,8 +18,16 @@ const Card = () => {
         starsCount,
         languageCount,
         languageList,
-        lastCommitAt
+        lastCommitAt,
+        isError
     } = useRepositoryCardStore()
+
+    useEffect(() => {
+        if (isError) {
+            navigate(RouteName.ErrorPage)
+            return
+        }
+    }, [navigate, isError])
 
     useEffect(() => {
         if (!name || !owner) {

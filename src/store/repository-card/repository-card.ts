@@ -6,6 +6,7 @@ import {RepositoryCardState} from "@store/repository-card/types.ts";
 
 const useRepositoryCardStore = create<RepositoryCardState>()(devtools(set => ({
     isLoading: false,
+    isError: false,
     name: '',
     description: '',
     starsCount: 0,
@@ -19,21 +20,24 @@ const useRepositoryCardStore = create<RepositoryCardState>()(devtools(set => ({
     lastCommitAt: '',
     fetch: async ({ name, owner }: GetRepositoryInfoQueryParams) => {
         set({ isLoading: true })
-        const { data } = await repositoryInfoAPI.get({ name, owner })
-
-        return set({
-            isLoading: false,
-            name,
-            owner: {
-                login: data.repository.owner.login,
-                url: data.repository.owner.url,
-                avatarUrl: data.repository.owner.avatarUrl
-            },
-            starsCount: data.repository.stargazerCount,
-            languageCount: data.repository.languages.totalCount,
-            languageList: data.repository.languages.nodes.map(item => item.name),
-            lastCommitAt: new Date(data.repository.pushedAt).toLocaleString(),
-        })
+        try {
+            const { data } = await repositoryInfoAPI.get({ name, owner })
+            return set({
+                isLoading: false,
+                name,
+                owner: {
+                    login: data.repository.owner.login,
+                    url: data.repository.owner.url,
+                    avatarUrl: data.repository.owner.avatarUrl
+                },
+                starsCount: data.repository.stargazerCount,
+                languageCount: data.repository.languages.totalCount,
+                languageList: data.repository.languages.nodes.map(item => item.name),
+                lastCommitAt: new Date(data.repository.pushedAt).toLocaleString(),
+            })
+        } catch (e) {
+            set({ isLoading: false, isError: true })
+        }
     }
 })))
 

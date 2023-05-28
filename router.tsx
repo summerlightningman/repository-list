@@ -7,6 +7,7 @@ import ErrorPage from "@pages/errors/error-page.tsx";
 export enum RouteName {
     Search = '/search',
     RepositoryCard = '/repository',
+    ErrorPage = '/error',
     Error404 = '*'
 }
 
@@ -22,6 +23,10 @@ export const router = createBrowserRouter([
             {
                 path: `${RouteName.RepositoryCard}/:owner/:name`,
                 element: <Card/>
+            },
+            {
+                path: RouteName.ErrorPage,
+                element: <ErrorPage text="Error 401: Bad request"/>
             },
             {
                 path: RouteName.Error404,

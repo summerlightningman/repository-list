@@ -7,8 +7,9 @@ export interface RepositoryListItem {
 }
 
 export interface RepositoryListState {
-    list: RepositoryListItem[],
     isLoading: boolean
+    isError: boolean
+    list: RepositoryListItem[],
     pagesCount: number
     fetch: (name: string) => void,
 }
