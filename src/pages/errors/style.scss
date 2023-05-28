@@ -1,0 +1,11 @@
+@import '../../style/mixins/flex';
+@import '../../style/mixins/font';
+
+.error-page {
+  @include flex-column-center;
+  height: 100%;
+
+  &__text {
+    @include font-roboto(900);
+  }
+}
