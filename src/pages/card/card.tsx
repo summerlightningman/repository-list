@@ -4,6 +4,7 @@ import {RouteName} from '../../../router.tsx'
 import useRepositoryCardStore from '@store/repository-card/repository-card.ts'
 
 import './card.scss'
+import LoaderRing from "@components/loader/loader-ring.tsx";
 
 const Card = () => {
     const navigate = useNavigate()
@@ -33,7 +34,7 @@ const Card = () => {
     return <main className="card">
         {
             isLoading
-            ? 'Loading...'
+            ? <div className="card__loader"><span>.....Loading....</span><LoaderRing/></div>
                 : <div className="card__repo-info">
                     <button className="card__back-btn" onClick={goBack}>←<br/>Go back</button>
                     <section className="card__repo-section">

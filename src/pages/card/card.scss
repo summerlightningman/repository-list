@@ -1,8 +1,17 @@
 @import '../../style/mixins/font';
+@import '../../style/mixins/flex';
 
 .card {
   height: 100%;
   border-radius: inherit;
+
+  &__loader {
+    @include flex-column-center;
+    height: 100%;
+
+    @include font-roboto(900);
+    font-size: 3rem;
+  }
 
   &__repo-info {
     height: 100%;
